@@ -32,6 +32,8 @@
     <bean id="securityManager"
           class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="realm"/>
+        <property name="sessionManager" ref="sessionManager"/>
+        <property name="rememberMeManager" ref="cookieRememberMeManager"/>
     </bean>
 
     <bean id="realm"
@@ -45,4 +47,18 @@
         <property name="hashIterations" value="1"/>
     </bean>
 
+    <bean id="sessionManager" class="org.yanbing.session.CustomSessionManager">
+        <property name="sessionDAO" ref="redisSessionDao"/>
+    </bean>
+
+    <bean id="redisSessionDao" class="org.yanbing.session.RedisSessionDao"/>
+
+    <bean id="cookieRememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="cookie"/>
+    </bean>
+
+    <bean id="cookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="maxAge" value="864000"/>
+    </bean>
 </beans>

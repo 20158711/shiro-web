@@ -3,13 +3,23 @@ package org.yanbing.vo;
 public class User {
     private String username;
     private String password;
+    private boolean rememberMe;
 
     @Override
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", rememberMe=" + rememberMe +
                 '}';
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
     }
 
     public String getUsername() {

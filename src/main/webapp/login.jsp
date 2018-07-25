@@ -14,6 +14,7 @@
     <form action="${pageContext.request.contextPath}/loginUrl" method="post">
       用户名：<input type="text" name="username"/><br/>
       密码：<input type="text" name="password"/><br/>
+      记住密码：<input type="checkbox" name="rememberMe"/>
       <input type="submit" value="登录">
     </form>
   </body>
